@@ -1,0 +1,289 @@
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  * {
+    margin: 0;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  html, body {
+    min-height: 100%;
+  }
+  
+  body {
+    line-height: 1.5;
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  
+  input, button, textarea, select {
+    font: inherit;
+    margin: 0;
+    padding: 0;
+  }
+  
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  address {
+    font-style: normal;
+  }
+  
+  .sr-only {
+    position: absolute;
+    width: 0.0625rem;
+    height: 0.0625rem;
+    padding: 0;
+    margin: -0.0625rem;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  :root {
+  
+    /*colors*/
+    --bg_blue: hsl(210, 46%, 95%);
+    --title_blue: hsl(217, 19%, 35%);
+    --text_blue: hsl(214, 17%, 51%);
+    --date_blue: hsl(212, 23%, 69%);
+    --white: hsl(0, 0%, 100%);
+  
+    /*font-weights*/
+    --normal: 500;
+    --bold: 700;
+  
+  }
+
+  body {
+    display: grid;
+    place-content: center;
+    height: auto;
+    min-height: 100vh;
+    align-items: center;
+    font-family: 'Manrope', sans-serif;
+    background-color: var(--bg_blue);
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 25rem;
+    border-radius: 0.5rem;
+    margin: 0.75rem;
+    overflow: hidden;
+    background-color: var(--white);
+    box-shadow: 0rem 2.5rem 2.5rem -0.625rem rgba(201, 213, 225, 0.503415);
+  }
+
+  .card__image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .card__content {
+    position: relative;
+    padding: 1rem 2rem;
+  }
+
+  .card__title {
+    font-size: 1.25rem;
+    font-weight: var(--bold);
+    color: var(--title_blue);
+    line-height: 1.75rem;
+    letter-spacing: 0.0156rem;
+  }
+
+  .card__paragraph {
+    font-size: 0.8125rem;
+    font-weight: var(--normal);
+    color: var(--text_blue);
+    letter-spacing: 0.0076rem;
+    margin-top: 0.75rem;
+  }
+
+  .card__ft {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin-top: 1.25rem;
+  }
+
+  .profile {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .profile__avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+  }
+
+  .profile__info {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8125rem;
+    font-weight: var(--bold);
+    color: var(--title_blue);
+  }
+
+  time {
+    font-weight: var(--normal);
+    color: var(--date_blue);
+  }
+
+  .share-btn {
+    display: grid;
+    place-content: center;
+    margin-inline-start: auto;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    background-color: var(--bg_blue);
+    border: none;
+    border-radius: 50%;
+    z-index: 100;
+    transition: 0.5s ease;
+  }
+
+  .share-btn:is(:hover, [aria-expanded="true"]) {
+    background-color: var(--text_blue);
+  }
+
+  .share-btn:is([aria-expanded="false"]) {
+    background-color: var(--bg_blue);
+  }
+
+  .share-btn> img {
+    width: 0.9375rem;
+    height: 0.8125rem;
+    transition: all 0.8s ease;
+  }
+
+  .share-btn:is(:hover, [aria-expanded="true"]) > img {
+    filter: brightness(0) invert(1);
+  }
+
+  .share-btn:is([aria-expanded="false"]) > img {
+    filter: none;
+  }
+
+  .share-card {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    padding: 1.4rem 2.25rem;
+    z-index: 10;
+    opacity: 1;
+    transition: 0.4s ease-in;
+    background-color: var(--title_blue);
+  }
+
+  .share-btn[aria-expanded="false"] + .share-card__hidden {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .share-card__text {
+    font-size: 0.8125rem;
+    font-weight: var(--normal);
+    color: var(--date_blue);
+    letter-spacing: 0.3125rem;
+    text-transform: uppercase;
+  }
+
+  .share-card__icon:is(:hover, :focus-visible) {
+    opacity: 0.6;
+    transition: 0.4s ease-in-out;
+  }
+
+  @media screen and (min-width: 48rem) {
+
+    .card {
+      flex-direction: row;
+      max-width: 45.625rem;
+      z-index: 10;
+      overflow: visible;
+    }
+  
+    .card__image {
+      max-width: 17.8125rem;
+      object-position: left;
+      border-radius: 0.5rem 0 0 0.5rem;
+    }
+  
+    .card__content {
+      padding: 2rem 2.5rem;
+    }
+  
+    .share-card {
+      width: fit-content;
+      right: 2%;
+      left: auto;
+      bottom: 35%;
+      padding: 1rem 2.25rem;
+      border-radius: 0.5rem;
+      z-index: 100;
+      box-shadow: 0rem 0.625rem 0.625rem rgba(201, 213, 225, 0.503415);
+    }
+
+    .share-card::after {
+      position: absolute;
+      content: '';
+      width: 1.5625rem;
+      height: 0.9375rem;
+      bottom: -0.875rem;
+      right: 15%;
+      clip-path: polygon(100% 0, 0 0, 50% 100%);
+      background-color: var(--title_blue);
+    }
+
+  }
+
+  @media screen and (min-width: 54.0625rem) {
+  
+    .share-card {
+      right: -15%;
+    }
+
+    .share-card::after {
+      right: 45%;
+    }
+
+  }
